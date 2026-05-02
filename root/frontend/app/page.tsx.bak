@@ -69,17 +69,46 @@ const TESTIMONIALS = [
   },
 ];
 
-/* ─── Shared glass style ────────────────────────────────────── */
-const glass = {
-  background: "rgba(255,255,255,0.55)",
-  backdropFilter: "blur(20px) saturate(180%)",
-  WebkitBackdropFilter: "blur(20px) saturate(180%)",
-  border: "1px solid rgba(255,255,255,0.85)",
-  borderRadius: 20,
-  boxShadow:
-    "0 4px 24px rgba(100,120,160,0.10), 0 1px 0 rgba(255,255,255,0.9) inset",
-  overflow: "hidden" as const,
-} satisfies React.CSSProperties;
+/* ─── Styles ─────────────────────────────────────────────────── */
+
+const S = {
+  section: {
+    maxWidth: 1200,
+    margin: "0 auto",
+    padding: "0 24px",
+  } as React.CSSProperties,
+
+  sectionLabel: {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 6,
+    fontSize: 12,
+    fontWeight: 600,
+    color: "#2BADD4",
+    background: "#E0F4FA",
+    padding: "4px 12px",
+    borderRadius: 999,
+    letterSpacing: "0.05em",
+    textTransform: "uppercase" as const,
+    marginBottom: 16,
+  },
+
+  h2: {
+    fontSize: "clamp(28px, 4vw, 40px)",
+    fontWeight: 800,
+    color: "#3D2B1F",
+    letterSpacing: "-0.5px",
+    lineHeight: 1.2,
+    marginBottom: 12,
+  },
+
+  subText: {
+    fontSize: 16,
+    color: "#7a6558",
+    lineHeight: 1.6,
+    maxWidth: 500,
+  },
+};
 
 /* ─── Page ───────────────────────────────────────────────────── */
 
@@ -88,52 +117,50 @@ export default function Home() {
     <>
       <Navbar />
 
-      <main style={{ flex: 1, position: "relative", zIndex: 2 }}>
-
-        {/* ── HERO ────────────────────────────────────────────── */}
+      <main style={{ flex: 1 }}>
+        {/* ── HERO ── */}
         <section
           style={{
-            padding: "110px 24px 80px",
+            background:
+              "linear-gradient(160deg, #E0F4FA 0%, #FAF4EC 50%, #ffffff 100%)",
+            padding: "100px 24px 72px",
             overflow: "hidden",
             position: "relative",
           }}
         >
-          {/* Soft glow orbs */}
+          {/* decorative blobs */}
           <div
             aria-hidden
             style={{
               position: "absolute",
-              top: -100,
-              right: -60,
-              width: 480,
-              height: 480,
+              top: -80,
+              right: -80,
+              width: 400,
+              height: 400,
               background:
-                "radial-gradient(circle, rgba(43,173,212,0.15) 0%, transparent 65%)",
+                "radial-gradient(circle, rgba(43,173,212,0.15) 0%, transparent 70%)",
               borderRadius: "50%",
               pointerEvents: "none",
-              animation: "orbPulse 9s ease-in-out infinite",
             }}
           />
           <div
             aria-hidden
             style={{
               position: "absolute",
-              bottom: -80,
+              bottom: -60,
               left: -60,
-              width: 380,
-              height: 380,
+              width: 300,
+              height: 300,
               background:
-                "radial-gradient(circle, rgba(232,114,42,0.12) 0%, transparent 65%)",
+                "radial-gradient(circle, rgba(232,114,42,0.12) 0%, transparent 70%)",
               borderRadius: "50%",
               pointerEvents: "none",
-              animation: "orbPulse 11s ease-in-out infinite reverse",
             }}
           />
 
           <div
             style={{
-              maxWidth: 1200,
-              margin: "0 auto",
+              ...S.section,
               display: "grid",
               gridTemplateColumns: "1fr auto",
               gap: 48,
@@ -142,13 +169,14 @@ export default function Home() {
           >
             {/* Left */}
             <div className="animate-fade-in-up">
-              <div className="section-label">✨ Photobooth Digital Modern</div>
+              {/* Badge */}
+              <div style={S.sectionLabel}>✨ Photobooth Digital Modern</div>
 
               <h1
                 style={{
                   fontSize: "clamp(36px, 5vw, 60px)",
                   fontWeight: 900,
-                  color: "#1a1f2e",
+                  color: "#3D2B1F",
                   letterSpacing: "-1px",
                   lineHeight: 1.1,
                   marginBottom: 20,
@@ -167,7 +195,7 @@ export default function Home() {
               <p
                 style={{
                   fontSize: "clamp(15px, 2vw, 18px)",
-                  color: "#4a5568",
+                  color: "#5a4032",
                   lineHeight: 1.7,
                   maxWidth: 480,
                   marginBottom: 36,
@@ -191,15 +219,12 @@ export default function Home() {
                     fontSize: 15,
                     fontWeight: 700,
                     color: "#ffffff",
-                    background: "rgba(43,173,212,0.88)",
+                    background: "#2BADD4",
                     padding: "13px 28px",
-                    borderRadius: 9999,
+                    borderRadius: 10,
                     textDecoration: "none",
-                    border: "1px solid rgba(43,173,212,0.4)",
-                    backdropFilter: "blur(16px)",
-                    boxShadow:
-                      "0 4px 20px rgba(43,173,212,0.28), 0 1px 0 rgba(255,255,255,0.3) inset",
-                    transition: "all 0.25s cubic-bezier(0.22,1,0.36,1)",
+                    transition: "background 0.15s, transform 0.15s",
+                    boxShadow: "0 4px 14px rgba(43,173,212,0.35)",
                   }}
                 >
                   🎉 Coba Sekarang
@@ -213,16 +238,13 @@ export default function Home() {
                     gap: 8,
                     fontSize: 15,
                     fontWeight: 600,
-                    color: "#1a1f2e",
-                    background: "rgba(255,255,255,0.6)",
+                    color: "#3D2B1F",
+                    background: "#ffffff",
                     padding: "13px 28px",
-                    borderRadius: 9999,
+                    borderRadius: 10,
                     textDecoration: "none",
-                    border: "1px solid rgba(255,255,255,0.85)",
-                    backdropFilter: "blur(16px)",
-                    boxShadow:
-                      "0 4px 16px rgba(100,120,160,0.10), 0 1px 0 rgba(255,255,255,0.9) inset",
-                    transition: "all 0.25s cubic-bezier(0.22,1,0.36,1)",
+                    border: "1.5px solid #E8D8C4",
+                    transition: "border-color 0.15s, transform 0.15s",
                   }}
                 >
                   Lihat Template →
@@ -237,13 +259,13 @@ export default function Home() {
                       style={{
                         fontSize: 22,
                         fontWeight: 800,
-                        color: "#1a1f2e",
+                        color: "#3D2B1F",
                         letterSpacing: "-0.5px",
                       }}
                     >
                       {s.value}
                     </div>
-                    <div style={{ fontSize: 12, color: "#8a97aa", marginTop: 2 }}>
+                    <div style={{ fontSize: 12, color: "#7a6558", marginTop: 2 }}>
                       {s.label}
                     </div>
                   </div>
@@ -269,8 +291,9 @@ export default function Home() {
                   left: 0,
                   top: 20,
                   width: 90,
-                  ...glass,
+                  background: "#fff",
                   borderRadius: 12,
+                  boxShadow: "0 8px 32px rgba(0,0,0,0.14)",
                   padding: 6,
                   transform: "rotate(-5deg)",
                 }}
@@ -282,15 +305,14 @@ export default function Home() {
                       height: 70,
                       background:
                         i % 2 === 0
-                          ? "linear-gradient(135deg,rgba(43,173,212,0.18),rgba(43,173,212,0.06))"
-                          : "linear-gradient(135deg,rgba(232,114,42,0.18),rgba(232,114,42,0.06))",
+                          ? "linear-gradient(135deg,#E0F4FA,#FAF4EC)"
+                          : "linear-gradient(135deg,#2BADD4,#5ec8e5)",
                       borderRadius: 7,
                       marginBottom: i < 3 ? 4 : 0,
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
                       fontSize: 26,
-                      border: "1px solid rgba(255,255,255,0.7)",
                     }}
                   >
                     {e}
@@ -306,8 +328,9 @@ export default function Home() {
                   right: 10,
                   top: 0,
                   width: 90,
-                  ...glass,
+                  background: "#fff",
                   borderRadius: 12,
+                  boxShadow: "0 8px 32px rgba(0,0,0,0.14)",
                   padding: 6,
                   transform: "rotate(4deg)",
                 }}
@@ -319,15 +342,14 @@ export default function Home() {
                       height: 70,
                       background:
                         i % 2 === 0
-                          ? "linear-gradient(135deg,rgba(120,100,220,0.15),rgba(120,100,220,0.05))"
-                          : "linear-gradient(135deg,rgba(43,173,212,0.12),rgba(43,173,212,0.04))",
+                          ? "linear-gradient(135deg,#E8F6FB,#FDEEE4)"
+                          : "linear-gradient(135deg,#FAF4EC,#F5E6D3)",
                       borderRadius: 7,
                       marginBottom: i < 3 ? 4 : 0,
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
                       fontSize: 26,
-                      border: "1px solid rgba(255,255,255,0.7)",
                     }}
                   >
                     {e}
@@ -335,7 +357,7 @@ export default function Home() {
                 ))}
               </div>
 
-              {/* Strip 3 */}
+              {/* Strip 3 – small */}
               <div
                 className="animate-float-3"
                 style={{
@@ -343,8 +365,9 @@ export default function Home() {
                   left: 60,
                   bottom: 0,
                   width: 80,
-                  ...glass,
+                  background: "#fff",
                   borderRadius: 10,
+                  boxShadow: "0 6px 24px rgba(0,0,0,0.12)",
                   padding: 5,
                   transform: "rotate(-2deg)",
                 }}
@@ -356,15 +379,14 @@ export default function Home() {
                       height: 62,
                       background:
                         i % 2 === 0
-                          ? "linear-gradient(135deg,rgba(232,114,42,0.14),rgba(232,114,42,0.04))"
-                          : "linear-gradient(135deg,rgba(43,173,212,0.14),rgba(43,173,212,0.04))",
+                          ? "linear-gradient(135deg,#E0F4FA,#b8e8f5)"
+                          : "linear-gradient(135deg,#FDEEE4,#f9d5ba)",
                       borderRadius: 6,
                       marginBottom: i < 2 ? 4 : 0,
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
                       fontSize: 24,
-                      border: "1px solid rgba(255,255,255,0.7)",
                     }}
                   >
                     {e}
@@ -375,52 +397,17 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── HOW IT WORKS ────────────────────────────────────── */}
-        <section style={{ padding: "80px 24px", position: "relative" }}>
-          <div
-            aria-hidden
-            style={{
-              position: "absolute",
-              top: 0,
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "50%",
-              height: 1,
-              background:
-                "linear-gradient(90deg, transparent, rgba(43,173,212,0.25), transparent)",
-            }}
-          />
-          <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        {/* ── HOW IT WORKS ── */}
+        <section style={{ padding: "80px 24px" }}>
+          <div style={S.section}>
             <div style={{ textAlign: "center", marginBottom: 48 }}>
-              <div
-                className="section-label"
-                style={{ margin: "0 auto 16px", display: "inline-flex" }}
-              >
+              <div style={{ ...S.sectionLabel, margin: "0 auto 16px" }}>
                 🚀 Cara Pakai
               </div>
-              <h2
-                style={{
-                  fontSize: "clamp(28px, 4vw, 40px)",
-                  fontWeight: 800,
-                  color: "#1a1f2e",
-                  letterSpacing: "-0.5px",
-                  lineHeight: 1.2,
-                  marginBottom: 12,
-                  textAlign: "center",
-                }}
-              >
+              <h2 style={{ ...S.h2, textAlign: "center" }}>
                 Empat langkah mudah
               </h2>
-              <p
-                style={{
-                  fontSize: 16,
-                  color: "#6b7a90",
-                  lineHeight: 1.6,
-                  maxWidth: 500,
-                  margin: "0 auto",
-                  textAlign: "center",
-                }}
-              >
+              <p style={{ ...S.subText, margin: "0 auto", textAlign: "center" }}>
                 Dari pilih template hingga unduh hasil, semua beres dalam
                 hitungan menit.
               </p>
@@ -434,8 +421,23 @@ export default function Home() {
               }}
             >
               {STEPS.map((step, i) => (
-                <ParallaxReveal key={step.num} delay={i * 120} depth={28} direction="up">
-                  <div className="card-hover glass-card" style={{ padding: "28px 24px", height: "100%" }}>
+                <ParallaxReveal
+                  key={step.num}
+                  delay={i * 120}
+                  depth={30}
+                  direction="up"
+                >
+                  <div
+                    className="card-hover"
+                    style={{
+                      background: "#FAF4EC",
+                      border: "1.5px solid #E8D8C4",
+                      borderRadius: 16,
+                      padding: "28px 24px",
+                      position: "relative",
+                      height: "100%",
+                    }}
+                  >
                     <div
                       style={{
                         fontSize: 11,
@@ -447,11 +449,20 @@ export default function Home() {
                     >
                       {step.num}
                     </div>
-                    <div style={{ fontSize: 32, marginBottom: 12 }}>{step.icon}</div>
-                    <h3 style={{ fontSize: 16, fontWeight: 700, color: "#1a1f2e", marginBottom: 8 }}>
+                    <div style={{ fontSize: 32, marginBottom: 12 }}>
+                      {step.icon}
+                    </div>
+                    <h3
+                      style={{
+                        fontSize: 16,
+                        fontWeight: 700,
+                        color: "#3D2B1F",
+                        marginBottom: 8,
+                      }}
+                    >
                       {step.title}
                     </h3>
-                    <p style={{ fontSize: 13, color: "#6b7a90", lineHeight: 1.6 }}>
+                    <p style={{ fontSize: 13, color: "#7a6558", lineHeight: 1.6 }}>
                       {step.desc}
                     </p>
                   </div>
@@ -461,22 +472,16 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── TRENDING TEMPLATES ───────────────────────────────── */}
-        <section style={{ padding: "80px 24px", position: "relative" }}>
-          <div
-            aria-hidden
-            style={{
-              position: "absolute",
-              top: 0,
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "50%",
-              height: 1,
-              background:
-                "linear-gradient(90deg, transparent, rgba(232,114,42,0.2), transparent)",
-            }}
-          />
-          <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        {/* ── TRENDING TEMPLATES ── */}
+        <section
+          style={{
+            padding: "80px 24px",
+            background: "#FAF4EC",
+            borderTop: "1px solid #E8D8C4",
+            borderBottom: "1px solid #E8D8C4",
+          }}
+        >
+          <div style={S.section}>
             <div
               style={{
                 display: "flex",
@@ -488,23 +493,21 @@ export default function Home() {
               }}
             >
               <div>
-                <div className="section-label">🔥 Trending</div>
-                <h2
-                  style={{
-                    fontSize: "clamp(28px, 4vw, 40px)",
-                    fontWeight: 800,
-                    color: "#1a1f2e",
-                    letterSpacing: "-0.5px",
-                    marginBottom: 0,
-                  }}
-                >
-                  Template trending
-                </h2>
+                <div style={S.sectionLabel}>🔥 Trending</div>
+                <h2 style={{ ...S.h2, marginBottom: 0 }}>Template trending</h2>
               </div>
               <Link
                 href="/"
                 id="see-all-templates"
-                style={{ fontSize: 14, fontWeight: 600, color: "#2BADD4", textDecoration: "none" }}
+                style={{
+                  fontSize: 14,
+                  fontWeight: 600,
+                  color: "#2BADD4",
+                  textDecoration: "none",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 4,
+                }}
               >
                 Lihat Semua →
               </Link>
@@ -521,7 +524,7 @@ export default function Home() {
                 <ParallaxReveal
                   key={t.name}
                   delay={i * 80}
-                  depth={i % 2 === 0 ? 32 : 18}
+                  depth={i % 2 === 0 ? 35 : 20}
                   direction={i % 2 === 0 ? "up" : "down"}
                 >
                   <Link
@@ -529,18 +532,25 @@ export default function Home() {
                     id={`template-card-${i}`}
                     style={{ textDecoration: "none", display: "block" }}
                   >
-                    <div className="card-hover glass-card" style={{ borderRadius: 14, overflow: "hidden" }}>
+                    <div
+                      className="card-hover"
+                      style={{
+                        background: "#ffffff",
+                        border: "1.5px solid #E8D8C4",
+                        borderRadius: 14,
+                        overflow: "hidden",
+                      }}
+                    >
                       <div
                         style={{
                           height: 140,
                           background: `linear-gradient(135deg,
-                            hsla(${i * 55},75%,75%,0.45) 0%,
-                            hsla(${i * 55 + 40},65%,85%,0.3) 100%)`,
+                            hsl(${i * 55},70%,88%) 0%,
+                            hsl(${i * 55 + 30},60%,94%) 100%)`,
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
                           fontSize: 48,
-                          borderBottom: "1px solid rgba(255,255,255,0.7)",
                         }}
                       >
                         {t.emoji}
@@ -550,7 +560,7 @@ export default function Home() {
                           style={{
                             fontSize: 13,
                             fontWeight: 600,
-                            color: "#1a1f2e",
+                            color: "#3D2B1F",
                             marginBottom: 4,
                             whiteSpace: "nowrap",
                             overflow: "hidden",
@@ -559,7 +569,7 @@ export default function Home() {
                         >
                           {t.name}
                         </p>
-                        <p style={{ fontSize: 11, color: "#8a97aa" }}>
+                        <p style={{ fontSize: 11, color: "#7a6558" }}>
                           {t.uses} penggunaan
                         </p>
                       </div>
@@ -571,35 +581,14 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── TESTIMONIALS ────────────────────────────────────── */}
-        <section style={{ padding: "80px 24px", position: "relative" }}>
-          <div
-            aria-hidden
-            style={{
-              position: "absolute",
-              top: 0,
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "50%",
-              height: 1,
-              background:
-                "linear-gradient(90deg, transparent, rgba(120,100,220,0.25), transparent)",
-            }}
-          />
-          <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        {/* ── TESTIMONIALS ── */}
+        <section style={{ padding: "80px 24px" }}>
+          <div style={S.section}>
             <div style={{ textAlign: "center", marginBottom: 48 }}>
-              <div className="section-label" style={{ margin: "0 auto 16px", display: "inline-flex" }}>
+              <div style={{ ...S.sectionLabel, margin: "0 auto 16px" }}>
                 💬 Testimonial
               </div>
-              <h2
-                style={{
-                  fontSize: "clamp(28px, 4vw, 40px)",
-                  fontWeight: 800,
-                  color: "#1a1f2e",
-                  letterSpacing: "-0.5px",
-                  textAlign: "center",
-                }}
-              >
+              <h2 style={{ ...S.h2, textAlign: "center" }}>
                 Kata pengguna kami
               </h2>
             </div>
@@ -615,12 +604,31 @@ export default function Home() {
                 <ParallaxReveal
                   key={t.name}
                   delay={i * 150}
-                  depth={22}
-                  direction={(["up", "left", "right"] as const)[i % 3]}
+                  depth={25}
+                  direction={["up", "left", "right"][i % 3] as "up" | "left" | "right"}
                 >
-                  <div className="card-hover glass-card" style={{ padding: "24px", height: "100%" }}>
-                    <div style={{ fontSize: 14, color: "#f59e0b", marginBottom: 12 }}>★★★★★</div>
-                    <p style={{ fontSize: 14, color: "#4a5568", lineHeight: 1.7, marginBottom: 20 }}>
+                  <div
+                    className="card-hover"
+                    style={{
+                      background: "#ffffff",
+                      border: "1.5px solid #E8D8C4",
+                      borderRadius: 16,
+                      padding: "24px",
+                      boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+                      height: "100%",
+                    }}
+                  >
+                    <div style={{ fontSize: 14, color: "#f59e0b", marginBottom: 12 }}>
+                      ★★★★★
+                    </div>
+                    <p
+                      style={{
+                        fontSize: 14,
+                        color: "#5a4032",
+                        lineHeight: 1.7,
+                        marginBottom: 20,
+                      }}
+                    >
                       &ldquo;{t.text}&rdquo;
                     </p>
                     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -628,21 +636,23 @@ export default function Home() {
                         style={{
                           width: 38,
                           height: 38,
-                          background: "rgba(255,255,255,0.7)",
-                          border: "1px solid rgba(255,255,255,0.9)",
+                          background: "linear-gradient(135deg,#E0F4FA,#FAF4EC)",
                           borderRadius: "50%",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
                           fontSize: 20,
-                          backdropFilter: "blur(8px)",
                         }}
                       >
                         {t.avatar}
                       </div>
                       <div>
-                        <p style={{ fontSize: 13, fontWeight: 600, color: "#1a1f2e" }}>{t.name}</p>
-                        <p style={{ fontSize: 12, color: "#8a97aa" }}>{t.handle}</p>
+                        <p style={{ fontSize: 13, fontWeight: 600, color: "#3D2B1F" }}>
+                          {t.name}
+                        </p>
+                        <p style={{ fontSize: 12, color: "#9ca3af" }}>
+                          {t.handle}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -652,35 +662,20 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── BOTTOM CTA ──────────────────────────────────────── */}
-        <section style={{ padding: "80px 24px", textAlign: "center", position: "relative" }}>
-          <div
-            aria-hidden
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%,-50%)",
-              width: 600,
-              height: 300,
-              background:
-                "radial-gradient(ellipse, rgba(43,173,212,0.10) 0%, transparent 70%)",
-              pointerEvents: "none",
-            }}
-          />
-          <div
-            style={{
-              maxWidth: 560,
-              margin: "0 auto",
-              ...glass,
-              padding: "56px 40px",
-            }}
-          >
+        {/* ── BOTTOM CTA ── */}
+        <section
+          style={{
+            padding: "72px 24px",
+            background: "#3D2B1F",
+            textAlign: "center",
+          }}
+        >
+          <div style={{ maxWidth: 560, margin: "0 auto" }}>
             <h2
               style={{
                 fontSize: "clamp(26px, 4vw, 40px)",
                 fontWeight: 800,
-                color: "#1a1f2e",
+                color: "#ffffff",
                 letterSpacing: "-0.5px",
                 marginBottom: 16,
                 lineHeight: 1.2,
@@ -691,7 +686,7 @@ export default function Home() {
             <p
               style={{
                 fontSize: 16,
-                color: "#6b7a90",
+                color: "#9ca3af",
                 lineHeight: 1.6,
                 marginBottom: 32,
               }}
@@ -707,16 +702,13 @@ export default function Home() {
                 gap: 8,
                 fontSize: 15,
                 fontWeight: 700,
-                color: "#ffffff",
-                background: "rgba(43,173,212,0.9)",
-                padding: "14px 36px",
-                borderRadius: 9999,
+                color: "#3D2B1F",
+                background: "#ffffff",
+                padding: "14px 32px",
+                borderRadius: 10,
                 textDecoration: "none",
-                border: "1px solid rgba(43,173,212,0.4)",
-                backdropFilter: "blur(16px)",
-                boxShadow:
-                  "0 6px 24px rgba(43,173,212,0.28), 0 1px 0 rgba(255,255,255,0.3) inset",
-                transition: "all 0.25s cubic-bezier(0.22,1,0.36,1)",
+                transition: "transform 0.15s",
+                boxShadow: "0 4px 20px rgba(255,255,255,0.15)",
               }}
             >
               🎉 Coba Sekarang — Gratis

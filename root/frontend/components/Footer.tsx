@@ -16,10 +16,14 @@ export default function Footer() {
   return (
     <footer
       style={{
-        borderTop: "1px solid #E8D8C4",
-        background: "#FAF4EC",
+        borderTop: "1px solid rgba(200,215,235,0.6)",
+        background: "rgba(255,255,255,0.50)",
+        backdropFilter: "blur(20px) saturate(180%)",
+        WebkitBackdropFilter: "blur(20px) saturate(180%)",
         padding: "48px 24px 32px",
         marginTop: "auto",
+        position: "relative",
+        zIndex: 2,
       }}
     >
       <div
@@ -52,17 +56,15 @@ export default function Footer() {
                 justifyContent: "center",
                 fontSize: 13,
               }}
-            >
-              📷
-            </div>
-            <span style={{ fontWeight: 700, fontSize: 16, color: "#3D2B1F" }}>
+            ></div>
+            <span style={{ fontWeight: 700, fontSize: 16, color: "#1a1f2e" }}>
               Photobooth
             </span>
           </div>
           <p
             style={{
               fontSize: 13,
-              color: "#7a6558",
+              color: "#6b7a90",
               lineHeight: 1.6,
               maxWidth: 220,
             }}
@@ -79,7 +81,7 @@ export default function Footer() {
               style={{
                 fontSize: 13,
                 fontWeight: 600,
-                color: "#3D2B1F",
+                color: "#1a1f2e",
                 marginBottom: 14,
                 letterSpacing: "0.02em",
               }}
@@ -104,7 +106,7 @@ export default function Footer() {
           maxWidth: 1200,
           margin: "32px auto 0",
           paddingTop: 24,
-          borderTop: "1px solid #E8D8C4",
+          borderTop: "1px solid rgba(200,215,235,0.4)",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
@@ -112,21 +114,21 @@ export default function Footer() {
           gap: 8,
         }}
       >
-        <p style={{ fontSize: 12, color: "#9ca3af" }}>
+        <p style={{ fontSize: 12, color: "#8a97aa" }}>
           © {new Date().getFullYear()} Photobooth. Hak cipta dilindungi.
         </p>
-        <p style={{ fontSize: 12, color: "#9ca3af" }}>
+        <p style={{ fontSize: 12, color: "#8a97aa" }}>
           Made by Rainzy21. | All rights reserved.
         </p>
       </div>
       <style>{`
         .footer-link {
           font-size: 13px;
-          color: #7a6558;
+          color: #6b7a90;
           text-decoration: none;
           transition: color 0.15s;
         }
-        .footer-link:hover { color: #3D2B1F; }
+        .footer-link:hover { color: #1a1f2e; }
       `}</style>
     </footer>
   );
